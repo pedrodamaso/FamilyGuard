@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+    <body>
+        {% if homespaces %}
+
+        <div class="py-5 text-center">
+            <h2>Connected Home Spaces</h2>
+        </div>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th  colspan="1" scope="col">Id</th>
+                    <th  colspan="5" scope="col">Client Token</th>
+                    <th  colspan="5" scope="col">Session</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for homespace in homespaces %}
+                        <tr>
+                            <td  colspan="1">{{ homespace.id }}</td>
+                            <td  colspan="5">{{ homespace.client_token }}</td>
+                            <td  colspan="5">{{ homespace.session_id }}</td>
+                        </tr>
+                    {% endfor %}
+            </tbody>
+        </table>   
+        {% else %}
+            <p>No homespaces connected!</p>
+        {% endif %}
+    </body>
+</html>
+
+{% endblock %}

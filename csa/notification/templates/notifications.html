@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+    <body>
+        <title>{% block title %}Connected Users{% endblock %}</title>
+        
+        {% if notifications %}
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th  colspan="3" scope="col">Username</th>
+                    <th  colspan="3" scope="col">Action</th>
+                    <th  colspan="3" scope="col">Type</th>
+                    <th  colspan="3" scope="col">Protocol</th>
+                    <th  colspan="3" scope="col">MAC</th>
+                    <th  colspan="3" scope="col">Data</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for notification in notifications %}
+                        <tr>
+                            <th scope="row">{{loop.index}}</th>
+                            <td  colspan="3">{{ notification.username }}</td>
+                            <td  colspan="3">{{ notification.action }}</td>
+                            <td  colspan="3">{{ notification.type }}</td>
+                            <td  colspan="3">{{ notification.protocol }}</td>
+                            <td  colspan="3">{{ notification.mac }}</td>
+                            <td  colspan="3">{{ notification.date }}</td>
+                        </tr>
+                    {% endfor %}
+                    
+            </tbody>
+        </table>   
+        {% else %}
+            <p>No user connected!</p>
+        {% endif %}
+    </body>
+</html>
+
+{% endblock %}

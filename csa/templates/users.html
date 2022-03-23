@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block content %}
+<html>
+    <body>
+        <title>{% block title %}Connected Users{% endblock %}</title>
+        
+        {% if users %}
+        <table class="table table-borderless">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th  colspan="3" scope="col">Session ID</th>
+                    <th  colspan="3" scope="col">Username</th>
+                </tr>
+            </thead>
+            <tbody>
+                    {% for user in users %}
+                        <tr>
+                            <th scope="row">{{loop.index}}</th>
+                            <td  colspan="3">{{ user.id }}</td>
+                            <td  colspan="3">{{ user.username }}</td>
+                        </tr>
+                    {% endfor %}
+            </tbody>
+        </table>   
+        {% else %}
+            <p>No user connected!</p>
+        {% endif %}
+    </body>
+</html>
+
+{% endblock %}
